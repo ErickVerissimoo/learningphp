@@ -1,0 +1,19 @@
+{
+    "name": "erick/learningphp",
+    "description": "um projeto para aprender o fundamental do PHP",
+    "autoload": {
+        "psr-4": {
+            "Src\\": "src/"
+        }
+    
+    },
+    "authors": [
+        {
+            "name": "ErickVerissimoo",
+            "email": "erickverissimodasilva144@gmail.com"
+        }
+    ],
+    "require": {
+        "vlucas/phpdotenv": "^5.6"
+    }
+}
