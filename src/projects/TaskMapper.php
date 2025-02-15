@@ -4,6 +4,7 @@ namespace Src\Model\projects;
 
 use DateTime;
 use mysqli;
+use PDO;
 
 class TaskMapper
 {
@@ -16,6 +17,9 @@ class TaskMapper
 
     public function create(Task $task): void
     {
+        if($this -> exists($task ->__get('name') )) {
+throw new \Exception('Tarefa com mesmo nome já cadastrada');
+        }
         $sql = "INSERT INTO tarefa (name, description, scheduled) VALUES (?, ?, ?)";
         $stmt = $this->mysqli->prepare($sql);
         $stmt->bind_param(
@@ -103,5 +107,16 @@ class TaskMapper
         }
         
         $stmt->close();
+    }
+
+    private function exists(string $name): bool{
+        $sql = "SELECT COUNT(*) FROM tarefa WHERE nome =?";
+        $stmt = $this->mysqli->prepare($sql);
+        $stmt->bind_param("s", $name);
+        $stmt -> execute();
+        $stmt -> bind_result($count);
+        $stmt -> fetch();
+        $stmt->close();
+        return $count > 0;
     }
 }

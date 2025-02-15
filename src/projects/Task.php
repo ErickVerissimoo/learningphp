@@ -2,7 +2,9 @@
 
 namespace Src\Model\projects;
 use DateTime;
-class Task
+use JsonSerializable;
+
+class Task implements JsonSerializable
 {
     private string $name;
     private string $description;
@@ -29,4 +31,16 @@ public function __get(string $name){
 }
 
 
+    /**
+     * @inheritDoc
+     */
+    public function jsonSerialize():array {
+
+        return  array(
+"name"=> $this->name,
+"description"=> $this->description,
+"scheduled" => $this->scheduledAt->format(DateTime::ATOM)
+
+        );
+    }
 }
