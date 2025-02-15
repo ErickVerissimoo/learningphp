@@ -13,7 +13,11 @@ public function __toString(): string{
 return "o carro é do tipo {$this-> type -> getValue()}";
 }
 }
-static $p =0;
+global $p;
+
+function teste(): void{
+
+}
 
 $carro = new Carro;
 $carro -> type = Type::grande;
