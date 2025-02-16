@@ -1,6 +1,7 @@
 <?php
 
 namespace Src\Model;
+
 use function Src\Model\plus;
 require 'func.php';
 require __DIR__ ."/../../vendor/autoload.php";
@@ -29,3 +30,4 @@ $p= get_defined_constants(false);
 
 $paraiba = $p['paraibano'];
 echo $paraiba;
+
