@@ -8,7 +8,8 @@ require __DIR__ ."/../../vendor/autoload.php";
 class Carro
 {
     
-    public Type $type;
+    private Type $type;
+    
 public function __toString(): string{
     
 return "o carro é do tipo {$this-> type -> getValue()}";
@@ -21,10 +22,9 @@ function teste(): void{
 }
 
 $carro = new Carro;
-$carro -> type = Type::grande;
+$carro -> $type = Type::grande;
 
 echo $carro;
-echo plus(x: 2, y: 3);
 define ("paraibano","sim");
 $p= get_defined_constants(false);
 
